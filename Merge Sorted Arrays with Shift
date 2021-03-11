@@ -1,0 +1,27 @@
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        if not nums1:
+            nums1=nums2
+            return
+        if not nums2:
+            return
+        x=0
+        while x<n:
+            for y in range(len(nums1)):
+                added=0
+                if nums2[x]<=nums1[y]:
+                    self.shifter(nums1, y)
+                    nums1[y] = nums2[x]
+                    added=1
+                    break
+            if added!=1:
+                for z in range(len(nums1)):
+                    nums1[m+x]=nums2[x]
+                    break
+            x+=1
+
+            
+    def shifter(self,arr,x):
+        for i in range(len(arr)-1, x,-1):
+            arr[i] = arr[i-1]
+
