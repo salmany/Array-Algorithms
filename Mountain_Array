@@ -1,0 +1,26 @@
+class Solution:
+    def validMountainArray(self, arr: List[int]) -> bool:
+        if len(arr)<3:
+            return False
+        mx = arr.index(max(arr))
+        if arr.count(arr[mx])>1:
+            return False
+        if self.checkIncreasing(arr[:mx+1]) and self.checkDecreasing(arr[(mx+1):]):
+            return True
+        return False
+
+    def checkDecreasing(self,arr) -> bool:
+        if arr == []:
+            return False
+        for i in range(len(arr)-1):
+            if arr[i] <= arr[i+1]:
+                return False
+        return True
+
+    def checkIncreasing(self,arr) -> bool:
+        if len(arr)<2:
+            return False
+        for i in range(len(arr)-1):
+            if arr[i+1] <= arr[i]:
+                return False
+        return True
