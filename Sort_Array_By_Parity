@@ -1,0 +1,13 @@
+class Solution:
+    def sortArrayByParity(self, A: List[int]) -> List[int]:
+        writeptr=0
+        for readptr in range(len(A)):
+            if A[readptr] % 2 == 0:
+                A[writeptr], A[readptr] = A[readptr], A[writeptr]
+                writeptr+=1
+        for readptr2 in range(len(A)):
+            if A[readptr2] % 2 != 0:
+                A[writeptr] = A[readptr2]
+                writeptr+=1
+        return A
+        
